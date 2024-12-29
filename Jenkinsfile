@@ -1,47 +1,42 @@
 pipeline {
-    agent any  // Run the pipeline on any available agent
+    agent any  // Use any available Jenkins agent
 
     stages {
-        stage('Checkout') {  // Clone the repository
+        stage('Checkout') {
             steps {
+                echo 'Cloning the repository...'
                 git branch: 'main', url: 'https://github.com/khadesagar200/Name2.git'
             }
         }
 
-        stage('Build') {  // Compile the code
+        stage('Build') {
             steps {
                 echo 'Building the application...'
-                // Example for Java projects
-                sh 'javac Name.java'
+                // Simulating a build step
+                sh 'echo "Build step executed!"'
             }
         }
 
-        stage('Test') {  // Run tests
+        stage('Test') {
             steps {
                 echo 'Running tests...'
-                // Example: Simulate test execution
-                sh 'echo "Tests Passed!"'
+                // Simulating a test step
+                sh 'echo "Test step executed!"'
             }
         }
 
-        stage('Deploy') {  // Deploy the application
+        stage('Deploy') {
             steps {
                 echo 'Deploying the application...'
-                // Example: Simulate deployment
-                sh 'echo "Application Deployed!"'
+                // Simulating a deployment step
+                sh 'echo "Deploy step executed!"'
             }
         }
     }
 
     post {
         always {
-            echo 'Pipeline completed.'
-        }
-        success {
-            echo 'Pipeline succeeded.'
-        }
-        failure {
-            echo 'Pipeline failed.'
+            echo 'Pipeline execution complete.'
         }
     }
 }
